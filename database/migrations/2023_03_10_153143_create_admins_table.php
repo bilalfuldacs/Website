@@ -18,6 +18,7 @@ return new class () extends Migration {
             $table->string('email');
             $table->string('token');
             $table->string('password');
+            $table->string('photo');
             $table->rememberToken();
             $table->timestamps();
         });
