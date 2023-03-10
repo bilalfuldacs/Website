@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\AdminLoginController;
 */
 
 
-route::get('admin/home', [AdminController::class,'index'])->name('admin.home');
+route::get('admin/home', [AdminController::class,'index'])->name('admin.home')->middleware('Admin:admin');
 route::get('admin/login', [AdminLoginController::class,'index'])->name('admin.Login');
+route::post('admin/login_submit', [AdminLoginController::class,'login_submit'])->name('admin.login_submit');
 route::get('admin/forgot_password', [AdminLoginController::class,'forgot_password'])->name('admin.forgot_password');
+route::get('admin/logout', [AdminLoginController::class,'admin_logout'])->name('admin.logout')->middleware('Admin:admin');

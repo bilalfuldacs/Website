@@ -29,15 +29,27 @@
                                     <h4 class="text-center">Admin Panel Login</h4>
                                 </div>
                                 <div class="card-body card-body-auth">
-                                    <form method="POST" action="index.html">
+                                    <form method="POST" action="{{route('admin.login_submit')}}">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
-                                                placeholder="Email Address" value="" autofocus>
+                                                placeholder="Email Address" value="{{old('email')}}" autofocus>
+                                            @error('email')
+                                            <div class="alert alert-danger">{{$message}}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="password"
                                                 placeholder="Password">
+                                            @error('password')
+                                            <div class="alert alert-danger">{{$message}}</div>
+                                            @enderror
                                         </div>
+                                        @if(session()->get('error_message'))
+
+                                        <div class="alert alert-danger">{{session()->get('error_message')}}</div>
+
+                                        @endif
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-lg btn-block">
                                                 Login
