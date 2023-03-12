@@ -9,7 +9,8 @@
 
         <ul class="sidebar-menu">
 
-            <li class="active"><a class="nav-link" href="index.html"><i class="fas fa-hand-point-right"></i>
+            <li class="active"><a class="nav-link" href="{{route('admin.home')}}"><i
+                        class="fas fa-hand-point-right"></i>
                     <span>@yield('heading')</span></a></li>
 
             <li class="nav-item dropdown active">
