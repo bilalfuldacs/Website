@@ -20,6 +20,11 @@
     <div id="app">
         <div class="main-wrapper">
             <section class="section">
+                @if(session()->get('success'))
+
+                <div class="alert alert-danger">{{session()->get('success')}}</div>
+
+                @endif
                 <div class="container container-login">
                     <div class="row">
                         <div
@@ -45,6 +50,11 @@
                                             <div class="alert alert-danger">{{$message}}</div>
                                             @enderror
                                         </div>
+                                        @if(session()->get('success_message'))
+
+                                        <div class="alert alert-danger">{{session()->get('success_message')}}</div>
+
+                                        @endif
                                         @if(session()->get('error_message'))
 
                                         <div class="alert alert-danger">{{session()->get('error_message')}}</div>

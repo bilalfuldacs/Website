@@ -13,6 +13,7 @@
         rel="stylesheet">
     @include('admin.layouts.style')
     @include('admin.layouts.scripts')
+
 </head>
 
 <body>
@@ -28,38 +29,28 @@
                                     <h4 class="text-center">Reset Password</h4>
                                 </div>
                                 <div class="card-body card-body-auth">
-                                    <form method="POST" action="{{route('admin.forgot_password_submit')}}">
+                                    <form method="POST" action="{{ route('admin.reset_password_final')}}">
                                         @csrf
-                                        @if(session()->get('error_message'))
-
-                                        <div class="alert alert-danger">{{session()->get('error_message')}}</div>
-
-                                        @endif
-
-
-                                        @if($errorss)
-                                        <p class="text-danger">{{ $errorss }}</p>
-                                        @endif
-
-
-                                        @error('email')
+                                        @error('password')
                                         <div class="alert alert-danger">{{$message}}</div>
                                         @enderror
                                         <div class="form-group">
-                                            <input type="email" class="form-control" name="email"
-                                                placeholder="Email Address" value="" autofocus>
+                                            <input type="password" class="form-control" name="password"
+                                                placeholder="Password" value="" autofocus>
+                                            <input type="hidden" class="form-control" name="email" value="{{$email}}"
+                                                autofocus>
+                                        </div>
+                                        @error('c_password')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="c_password"
+                                                placeholder="Retype Password" value="">
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                                Send Password Reset Link
+                                                Submit
                                             </button>
-                                        </div>
-                                        <div class="form-group">
-                                            <div>
-                                                <a href="{{route('admin.Login')}}">
-                                                    Back to login page
-                                                </a>
-                                            </div>
                                         </div>
                                     </form>
                                 </div>

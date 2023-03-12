@@ -6,7 +6,12 @@
 </head>
 
 <body>
-    {{$body}}
+    @php
+
+
+
+    echo $messages;
+    @endphp
 </body>
 
 </html>
