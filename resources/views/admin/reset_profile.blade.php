@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('heading','Edit_profile')
+
 
 @section('main_content')
 <div class="section-body">
@@ -8,54 +8,60 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('admin.profile_reset')}}" method="post">
+                    <form action="{{route('admin.profile_reset')}}" method="post" enctype="multipart/form-data">
                         @csrf @if(session()->get('success'))
 
                         <div class="alert alert-danger">{{session()->get('success')}}</div>
 
                         @endif
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="{{ asset('uploads/' . Auth::guard('admin')->user()->photo) }}" alt=""
-                                    class="profile-photo w_100_p">
-                                <input type="file" class="form-control mt_10" name="photo">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="mb-4"> @error('name')
-                                    <div class="alert alert-danger">{{$message}}</div>
-                                    @enderror
-                                    <label class="form-label">Name *</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ Auth::guard('admin')->user()->name }}">
+                        <div class="mb-4"> @error('photo')
+                            <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                            <div class="row">
+                                <div class="col-md-3">
 
-                                </div> @error('email')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                                <div class="mb-4">
-                                    <label class="form-label">Email *</label>
-                                    <input type="text" class="form-control" name="email"
-                                        value="{{ Auth::guard('admin')->user()->email }}">
+                                    <img src="{{ asset('uploads/' . Auth::guard('admin')->user()->photo) }}" alt=""
+                                        class="profile-photo w_100_p">
+                                    <input type="file" class="form-control mt_10" name="photo">
+
                                 </div>
-                                <div class="mb-4">
-                                    @error('password')
+
+                                <div class="col-md-9">
+                                    <div class="mb-4"> @error('name')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
+                                        <label class="form-label">Name *</label>
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ Auth::guard('admin')->user()->name }}">
+
+                                    </div> @error('email')
                                     <div class="alert alert-danger">{{$message}}</div>
                                     @enderror
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                                @error('confirm_password')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                                <div class="mb-4">
-                                    <label class="form-label">Retype Password</label>
-                                    <input type="password" class="form-control" name="confirm_password">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label"></label>
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <div class="mb-4">
+                                        <label class="form-label">Email *</label>
+                                        <input type="text" class="form-control" name="email"
+                                            value="{{ Auth::guard('admin')->user()->email }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        @error('password')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password">
+                                    </div>
+                                    @error('confirm_password')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
+                                    <div class="mb-4">
+                                        <label class="form-label">Retype Password</label>
+                                        <input type="password" class="form-control" name="confirm_password">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label"></label>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

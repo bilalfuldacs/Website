@@ -17,6 +17,7 @@ class AdminProfileController extends Controller
             'name'=>'required'
           ]);
 
+
         $admin=Admin::where('email', Auth::guard('admin')->user()->email)->first();
         if ($req->password!="") {
             $req->validate([
@@ -25,6 +26,19 @@ class AdminProfileController extends Controller
               ]);
 
             $admin->password=Hash::make($req->password);
+        }
+        if ($req->hasFile('photo')!="") {
+            $req->validate([
+                'photo'=>'image|mimes:jpg,jpeg,png',
+
+              ]);
+            unlink(public_path('uploads/'.$admin->photo));
+            $ext=$req->file('photo')->extension();
+
+            $file_name='admin'. ' .'. $ext;
+            $req->file('photo')->move(public_path('uploads/'), $file_name);
+            $admin->password=Hash::make($req->password);
+            $admin->photo=$file_name;
         }
         if ($admin) {
             $admin->name=$req->name;

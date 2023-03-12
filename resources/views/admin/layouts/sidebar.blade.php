@@ -11,7 +11,7 @@
 
             <li class="active"><a class="nav-link" href="{{route('admin.home')}}"><i
                         class="fas fa-hand-point-right"></i>
-                    <span>@yield('heading')</span></a></li>
+                    <span>Dashboard</span></a></li>
 
             <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown
