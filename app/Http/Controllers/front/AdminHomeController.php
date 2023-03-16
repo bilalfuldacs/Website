@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\homeadvertisement;
 
 class AdminHomeController extends Controller
 {
@@ -14,7 +15,9 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view('front.home');
+        $ad= homeadvertisement::where('id', 1)->first();
+
+        return view('front.home', compact('ad'));
     }
 
     /**

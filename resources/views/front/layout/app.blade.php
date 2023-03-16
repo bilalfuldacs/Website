@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="ad-section-1">
-                        <a href=""><img src="{{Asset('uploads/uploads/ad-1.png')}}" alt=""></a>
+                        <a href=""><img src="{{Asset('uploads/n7.jpg')}}" alt=""></a>
                     </div>
                 </div>
             </div>

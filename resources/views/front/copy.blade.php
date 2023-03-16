@@ -111,34 +111,18 @@
         </div>
     </div>
 </div>
-
-
 @if($ad->above_search_ad_status == "show")
 <div class="ad-section-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ "https://$ad->above_search_url"}}"><img src="{{ asset("uploads/$ad->above_search_at") }}"
-                        alt="no image"></a>
+                <a href="{{($ad->above_search_url)}}"><img src="{{ asset('$ad->above_search_at') }}" alt=""></a>
             </div>
         </div>
     </div>
 </div>
-@elseif($ad->above_search_ad_status == "hide")
-<div class="ad-section-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="{{ "https://$ad->above_search_url"}}"><img src="{{ asset('uploads/n-3.png') }}"
-                        alt="no image"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 @endif
+
 <div class="search-section">
     <div class="container">
         <div class="inner">
@@ -999,7 +983,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href=""><img src="{{asset('uploads/n2.jpg')}}" alt=""></a>
+                <a href=""><img src="uploads/ad-1.png" alt=""></a>
             </div>
         </div>
     </div>
